@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'hackfest';
+
+  marathons: Observable<any[]>;
+  
+  constructor(db: AngularFirestore) {
+    this.marathons = db.collection('marathons').valueChanges();
+  }
+  
 }
