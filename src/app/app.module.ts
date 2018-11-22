@@ -7,18 +7,21 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CoreModule } from './core/core.module';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
