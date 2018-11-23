@@ -1,0 +1,5 @@
+<ul>
+  <li class="text" *ngFor="let marathon of marathons | async">
+    <a [routerLink]="['/', marathon.shortname]">{{marathon.name}}</a>
+  </li>
+</ul>

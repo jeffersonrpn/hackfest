@@ -11,7 +11,7 @@
 <ng-template #authenticated>
   <div *ngIf="authService.user | async as user">
     <h3>{{ user.displayName }}</h3>
-    <img [src]="user.photoURL" [alt]="user.displayName">
+    <!-- <img [src]="user.photoURL" [alt]="user.displayName"> -->
     <button (click)="authService.logout()">
       Logout
     </button>

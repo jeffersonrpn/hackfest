@@ -9,11 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
+import { MarathonsDetailComponent } from './marathons/marathons-detail/marathons-detail.component';
+import { MarathonsListComponent } from './marathons/marathons-list/marathons-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ProjectsListComponent,
+    MarathonsDetailComponent,
+    MarathonsListComponent
   ],
   imports: [
     BrowserModule,
