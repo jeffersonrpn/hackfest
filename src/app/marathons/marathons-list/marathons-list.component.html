@@ -1,5 +1,7 @@
+<h1>Marathons</h1>
 <ul>
-  <li class="text" *ngFor="let marathon of marathons | async">
+  <li class="text" *ngFor="let marathon of marathons">
     <a [routerLink]="['/', marathon.shortname]">{{marathon.name}}</a>
   </li>
 </ul>
+<button (click)="create()">Create</button>

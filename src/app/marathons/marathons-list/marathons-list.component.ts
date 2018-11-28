@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
+
+import { Marathon } from 'src/app/shared/models/marathon';
+import { MarathonService } from 'src/app/shared/services/marathon.service';
 
 @Component({
   selector: 'app-marathons-list',
@@ -10,14 +12,28 @@ import { Observable } from 'rxjs';
 })
 export class MarathonsListComponent implements OnInit {
 
-  marathons: Observable<any[]>;
+  marathons: Marathon[];
 
   constructor(
-    private firestore: AngularFirestore
+    private marathonService: MarathonService
   ) {}
 
   ngOnInit() {
-    this.marathons = this.firestore.collection('marathons').valueChanges();
+    this.marathonService.get()
+      .subscribe(marathons => {
+        this.marathons = marathons;
+      })
+  }
+
+  create() {
+    let marathon = {
+      name: 'Marathon 2018',
+      shortname: 'marathon2018',
+      description: 'Lorem ipsum dolor net.'
+    }
+    this.marathonService.create(marathon).then((done) => {
+      console.log(done);
+    });
   }
 
 }
