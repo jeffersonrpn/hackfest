@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Observable } from 'rxjs';
+import { Marathon } from 'src/app/shared/models/marathon';
+import { MarathonService } from 'src/app/shared/services/marathon.service';
 
 @Component({
   selector: 'app-marathons-detail',
@@ -10,18 +10,17 @@ import { Observable } from 'rxjs';
 })
 export class MarathonsDetailComponent implements OnInit {
 
-  marathon: Observable<any>;
+  marathon: Marathon;
 
   constructor(
-    private firestore: AngularFirestore
+    private marathonService: MarathonService
   ) { }
 
   ngOnInit() {
-    const shortname = 'jampa2018'
-    this.marathon = this.firestore
-      .collection('marathons', ref => ref
-        .where('shortname', '==', shortname))
-        .valueChanges();
+    this.marathonService.getByShortname('marathon2018')
+      .subscribe(marathon => {
+        this.marathon = marathon;
+      })
   }
 
 }

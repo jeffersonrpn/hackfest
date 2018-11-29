@@ -16,9 +16,13 @@ export class MarathonService {
     return this.db.list<Marathon>('marathons').valueChanges();
   }
 
+  getByShortname(shortname: string) {
+    return this.db.object<Marathon>('marathons/' + shortname).valueChanges();
+  }
+
   create(marathon: Marathon): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.marathons$.push(marathon);
+      this.marathons$.set(marathon.shortname, marathon)
       resolve(true);
     });
   }
