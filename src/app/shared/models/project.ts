@@ -4,4 +4,5 @@ export class Project {
   githubURL: string;
   websiteURL: string;
   team: string[];
+  marathon: string;
 }
