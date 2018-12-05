@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -14,6 +15,7 @@ import { ProjectsListComponent } from './projects/projects-list/projects-list.co
 import { MarathonsDetailComponent } from './marathons/marathons-detail/marathons-detail.component';
 import { MarathonsListComponent } from './marathons/marathons-list/marathons-list.component';
 import { MarathonService } from './shared/services/marathon.service';
+import { ProjectsCreateComponent } from './projects/projects-create/projects-create.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { MarathonService } from './shared/services/marathon.service';
     UserProfileComponent,
     ProjectsListComponent,
     MarathonsDetailComponent,
-    MarathonsListComponent
+    MarathonsListComponent,
+    ProjectsCreateComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

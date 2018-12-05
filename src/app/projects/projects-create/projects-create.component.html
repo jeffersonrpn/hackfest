@@ -1,0 +1,35 @@
+<h1>Criar projeto</h1>
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Nome do projeto</label>
+    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="">
+    <small id="nameHelp" class="form-text text-muted">Nome provisório, apelido ou como queira chamar seu projeto.</small>
+  </div>
+  <div class="form-group">
+    <label for="description">Descrição</label>
+    <input type="text" formControlName="description" class="form-control" id="description" aria-describedby="descriptionHelp" placeholder="">
+    <small id="descriptionHelp" class="form-text text-muted">Descrição breve. Sem compromisso.</small>
+  </div>
+  <div class="form-group">
+    <label for="githubURL">Github</label>
+    <input type="text" formControlName="githubURL" class="form-control" id="githubURL" aria-describedby="githubURLHelp" placeholder="">
+    <small id="githubURLHelp" class="form-text text-muted">Se não tem ainda, é uma ótima hora de criar</small>
+  </div>
+  <div class="form-group">
+    <label for="websiteURL">Site</label>
+    <input type="text" formControlName="websiteURL" class="form-control" id="websiteURL" aria-describedby="websiteURLHelp" placeholder="">
+    <small id="websiteURLHelp" class="form-text text-muted">Já tem algo on-line?</small>
+  </div>
+  <div formArrayName="team">
+    <h3>Equipe</h3>
+    <div class="form-group" *ngFor="let address of team.controls; let i=index">
+      <label for="">Nome</label>
+      <input type="text" [formControlName]="i" class="form-control" id="">
+      <button type="button" (click)="removeMember(i)">Remover</button>
+    </div>
+    <button type="button" (click)="addMember()">Adicionar</button>
+  </div>
+  <button type="submit" [disabled]="!projectForm.valid">Criar projeto</button>
+</form>
+
+<pre>{{ projectForm.value | json }}</pre>
