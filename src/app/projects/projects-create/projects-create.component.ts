@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
+
+import { Project } from 'src/app/shared/models/project';
+import { ProjectService } from 'src/app/shared/services/project.service';
 
 @Component({
   selector: 'app-projects-create',
@@ -19,7 +23,9 @@ export class ProjectsCreateComponent {
   });
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private projectService: ProjectService
   ) { }
 
   get team() {
@@ -35,7 +41,11 @@ export class ProjectsCreateComponent {
   }
 
   onSubmit() {
-    console.warn(this.projectForm.value);
+    this.projectService.create(this.projectForm.value as Project).then(done => {
+      if (done) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
 }
